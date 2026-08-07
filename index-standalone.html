@@ -9,1004 +9,246 @@
     <meta name="theme-color" content="#9B8B7E">
     <title>开远行知中学 - 让成长真实发生</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
-            background: #FAFAF8;
-            color: #2C2C2C;
-            line-height: 1.6;
-        }
-
-        /* 颜色变量 */
-        :root {
-            --sage: #9B8B7E;
-            --sage-light: #C4B8A8;
-            --sage-dark: #6B5D52;
-            --sage-green: #A8B89C;
-            --cream: #F5F3F0;
-            --charcoal: #2C2C2C;
-        }
-
-        /* 容器 */
-        .container-premium {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .container-premium {
-                padding: 0 2rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .container-premium {
-                padding: 0 4rem;
-            }
-        }
-
-        /* 高级样式 */
-        .gradient-text {
-            background: linear-gradient(to right, var(--sage-dark), var(--sage), var(--sage-green));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .shadow-premium {
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .shadow-premium-lg {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-        }
-
-        .transition-smooth {
-            transition: all 500ms ease-out;
-        }
-
-        .card-premium {
-            border-radius: 1rem;
-            border: 1px solid rgba(196, 184, 168, 0.2);
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .card-premium:hover {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-            transform: translateY(-10px);
-        }
-
-        .btn-premium {
-            padding: 0.75rem 2rem;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            background: linear-gradient(to right, var(--sage-dark), var(--sage));
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 300ms ease-out;
-        }
-
-        .btn-premium:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-        }
-
-        .btn-premium:active {
-            transform: scale(0.95);
-        }
-
-        .btn-premium-outline {
-            padding: 0.75rem 2rem;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            border: 2px solid var(--sage-dark);
-            color: var(--sage-dark);
-            background: transparent;
-            cursor: pointer;
-            transition: all 300ms ease-out;
-        }
-
-        .btn-premium-outline:hover {
-            background: var(--sage-dark);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .line-accent {
-            height: 4px;
-            width: 3rem;
-            background: linear-gradient(to right, var(--sage-dark), var(--sage-green));
-            border-radius: 9999px;
-        }
-
-        .grid-premium {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .grid-premium {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* 导航栏 */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid rgba(196, 184, 168, 0.2);
-            z-index: 50;
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        nav .container-premium {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .nav-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--sage-dark), var(--sage), var(--sage-green));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            cursor: pointer;
-        }
-
-        .nav-links {
-            display: none;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-            }
-        }
-
-        .nav-links a {
-            color: var(--charcoal);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 300ms;
-        }
-
-        .nav-links a:hover {
-            color: var(--sage-dark);
-        }
-
-        .nav-btn {
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .nav-btn {
-                display: block;
-            }
-        }
-
-        /* Hero 部分 */
-        #hero {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding-top: 5rem;
-            background: linear-gradient(to bottom right, var(--cream), white, rgba(168, 184, 156, 0.1));
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 56rem;
-            margin: 0 auto;
-            padding: 1rem;
-            animation: fadeUp 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--sage-dark), var(--sage), var(--sage-green));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-h1 {
-                font-size: 4rem;
-            }
-        }
-
-        .hero-h2 {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--charcoal);
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-h2 {
-                font-size: 4rem;
-            }
-        }
-
-        .hero-p {
-            font-size: 1.125rem;
-            color: rgba(44, 44, 44, 0.7);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            font-weight: 300;
-            max-width: 42rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 4rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-buttons {
-                flex-direction: row;
-            }
-        }
-
-        .hero-arrow {
-            display: flex;
-            justify-content: center;
-            margin-top: 5rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(15px);
-            }
-        }
-
-        /* 通用章节 */
-        section {
-            padding: 6rem 0;
-        }
-
-        section h2 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            section h2 {
-                font-size: 3rem;
-            }
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title .line-accent {
-            margin: 1rem auto 0;
-        }
-
-        /* 值卡片 */
-        .value-card {
-            padding: 2rem;
-        }
-
-        .value-card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            transition: transform 300ms;
-        }
-
-        .value-card:hover .value-card-icon {
-            transform: scale(1.1);
-        }
-
-        .value-card h3 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--charcoal);
-            margin-bottom: 1rem;
-            transition: color 300ms;
-        }
-
-        .value-card:hover h3 {
-            color: var(--sage-dark);
-        }
-
-        .value-card p {
-            color: rgba(44, 44, 44, 0.6);
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        /* 统计部分 */
-        #stats {
-            background: linear-gradient(to bottom right, rgba(107, 93, 82, 0.05), rgba(168, 184, 156, 0.05));
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .counter {
-            font-weight: bold;
-            font-size: 3rem;
-            background: linear-gradient(to right, var(--sage-dark), var(--sage), var(--sage-green));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .counter {
-                font-size: 3.5rem;
-            }
-        }
-
-        .stat-item h3 {
-            font-size: 1.125rem;
-            font-weight: bold;
-            color: var(--charcoal);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            font-size: 0.875rem;
-            color: rgba(44, 44, 44, 0.6);
-        }
-
-        /* 解决方案卡片 */
-        .solution-card {
-            cursor: pointer;
-        }
-
-        .solution-card-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            transition: transform 300ms;
-            display: inline-block;
-        }
-
-        .solution-card:hover .solution-card-icon {
-            transform: scale(1.25);
-        }
-
-        .solution-card h3 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--charcoal);
-            margin-bottom: 1rem;
-            transition: color 300ms;
-        }
-
-        .solution-card:hover h3 {
-            color: var(--sage-dark);
-        }
-
-        .solution-card p {
-            color: rgba(44, 44, 44, 0.6);
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        /* 推荐部分 */
-        #testimonials {
-            background: linear-gradient(to bottom right, rgba(196, 184, 168, 0.1), rgba(168, 184, 156, 0.1));
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .testimonial-card {
-            padding: 2rem;
-        }
-
-        .quote-icon {
-            width: 2rem;
-            height: 2rem;
-            color: var(--sage-dark);
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-
-        .testimonial-card p:first-of-type {
-            color: rgba(44, 44, 44, 0.7);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-            font-weight: 300;
-        }
-
-        .testimonial-card p:last-of-type {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--sage-dark);
-        }
-
-        /* CTA 部分 */
-        #cta {
-            position: relative;
-            padding: 6rem 0;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--sage-dark), var(--sage), var(--sage-green));
-            opacity: 0.9;
-        }
-
-        .cta-bg-blur {
-            position: absolute;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.1);
-            filter: blur(120px);
-        }
-
-        .cta-bg-1 {
-            top: 0;
-            right: 0;
-            width: 24rem;
-            height: 24rem;
-        }
-
-        .cta-bg-2 {
-            bottom: 0;
-            left: 0;
-            width: 24rem;
-            height: 24rem;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 48rem;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .cta-h2 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .cta-h2 {
-                font-size: 3rem;
-            }
-        }
-
-        .cta-p {
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        .cta-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        @media (min-width: 768px) {
-            .cta-buttons {
-                flex-direction: row;
-            }
-        }
-
-        .btn-white {
-            padding: 0.75rem 2rem;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            background: white;
-            color: var(--sage-dark);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 300ms ease-out;
-        }
-
-        .btn-white:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-        }
-
-        .btn-white-outline {
-            padding: 0.75rem 2rem;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            border: 2px solid white;
-            color: white;
-            background: transparent;
-            cursor: pointer;
-            transition: all 300ms ease-out;
-        }
-
-        .btn-white-outline:hover {
-            background: white;
-            color: var(--sage-dark);
-            transform: scale(1.05);
-        }
-
-        /* 页脚 */
-        footer {
-            background: var(--charcoal);
-            color: white;
-            padding: 3rem 0;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--sage-dark), var(--sage), var(--sage-green));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .footer-section p {
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 300;
-        }
-
-        .footer-links {
-            list-style: none;
-            space-y: 0.5rem;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 300ms;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-divider {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-        }
-
-        .footer-quote {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-quote p:first-of-type {
-            color: rgba(255, 255, 255, 0.6);
-            font-style: italic;
-            font-weight: 300;
-        }
-
-        .footer-quote p:last-of-type {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.875rem;
-            gap: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-bottom {
-                flex-direction: row;
-            }
-        }
-
-        /* 移动菜单 */
-        .mobile-menu-btn {
-            display: block;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-
-        /* 滚动动画 */
-        .fade-in {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* 保持原有样式（略） */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html{scroll-behavior:smooth}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB',sans-serif;background:#FAFAF8;color:#2C2C2C;line-height:1.6}
+        :root{--sage:#9B8B7E;--sage-light:#C4B8A8;--sage-dark:#6B5D52;--sage-green:#A8B89C;--cream:#F5F3F0;--charcoal:#2C2C2C}
+        .container-premium{max-width:1280px;margin:0 auto;padding:0 1rem}
+        @media(min-width:768px){.container-premium{padding:0 2rem}}@media(min-width:1024px){.container-premium{padding:0 4rem}}
+        .gradient-text{background:linear-gradient(to right,var(--sage-dark),var(--sage),var(--sage-green));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+        .card-premium{border-radius:1rem;border:1px solid rgba(196,184,168,0.2);background:rgba(255,255,255,0.5);backdrop-filter:blur(10px);padding:2rem;box-shadow:0 10px 40px rgba(0,0,0,0.08)}
+        .btn-premium{padding:.75rem 2rem;border-radius:.75rem;font-weight:600;background:linear-gradient(to right,var(--sage-dark),var(--sage));color:#fff;border:none;cursor:pointer}
+        nav{position:fixed;top:0;width:100%;backdrop-filter:blur(10px);background:rgba(255,255,255,0.8);border-bottom:1px solid rgba(196,184,168,0.2);z-index:50}
+        nav .container-premium{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+        .nav-brand{font-size:1.25rem;font-weight:700}
+        section{padding:5rem 0}
+        .section-title{text-align:center;margin-bottom:2.5rem}
+        .line-accent{height:4px;width:3rem;background:linear-gradient(to right,var(--sage-dark),var(--sage-green));border-radius:9999px;margin:0.75rem auto 0}
+        pre.plain {white-space:pre-wrap;background:#fff;padding:1rem;border-radius:8px;border:1px solid #eee;font-size:0.95rem;color:#333}
+        /* 简化的响应式表 */
+        .grid-2{display:grid;grid-template-columns:1fr;gap:1.5rem}
+        @media(min-width:768px){.grid-2{grid-template-columns:1fr 1fr}}
+        .hero-img{width:100%;height:auto;border-radius:12px;object-fit:cover}
+        .muted{color:rgba(44,44,44,0.65)}
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav>
         <div class="container-premium">
-            <div class="nav-brand">行知中学</div>
-            <div class="nav-links">
-                <a href="#hero">首页</a>
-                <a href="#values">核心价值</a>
-                <a href="#stats">数据实力</a>
-                <a href="#solutions">教学方案</a>
-                <a href="#testimonials">家长评价</a>
+            <div class="nav-brand gradient-text">行知中学</div>
+            <div style="display:flex;align-items:center;gap:1rem">
+                <a href="#advantages" class="muted">优势总览</a>
+                <a href="#contact" class="muted">联系我们</a>
+                <button class="btn-premium">预约学位</button>
             </div>
-            <button class="btn-premium nav-btn">预约学位</button>
-            <button class="mobile-menu-btn" onclick="alert('移动菜单功能')">☰</button>
         </div>
     </nav>
 
-    <!-- Hero 部分 -->
-    <section id="hero">
-        <div class="hero-content">
-            <h1 class="hero-h1">当我们谈论行知</h1>
-            <h2 class="hero-h2">我们在谈论什么？</h2>
-            <p class="hero-p">
-                是连续5年领跑全市的中考总评，是超90%毕业生考入重点高中，<br>
-                更是每一个被深度看见、被科学点燃的年轻灵魂。
-            </p>
-            <div class="hero-buttons">
-                <button class="btn-premium">预约学位评估</button>
-                <button class="btn-premium-outline">探校开放日</button>
+    <main style="padding-top:4.5rem">
+        <!-- Hero -->
+        <section id="hero" class="container-premium" style="padding-top:2rem;padding-bottom:2rem">
+            <div style="display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:center">
+                <img src="http://www.kyxingzhi.com/upload/2025/06/060112215017.png" alt="开远行知中学 校园" class="hero-img">
+                <div style="text-align:left;margin-top:1rem">
+                    <h1 class="gradient-text" style="font-size:2rem;margin-bottom:.5rem">开远行知中学 —— 让成长真实发生</h1>
+                    <p class="muted" style="margin-bottom:1rem">深耕“教学做合一”，以系统化的教学体系、AI伴学与全封闭管理，成就“入口低、出口高”的升学奇迹。2026年秋季学位预约中。</p>
+                    <div style="display:flex;gap:0.75rem">
+                        <button class="btn-premium">预约学位评估</button>
+                        <button class="btn-premium" style="background:transparent;color:var(--sage-dark);border:2px solid var(--sage-dark)">探校开放日</button>
+                    </div>
+                </div>
             </div>
-            <div class="hero-arrow">↓</div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 核心价值部分 -->
-    <section id="values" style="background: white;">
-        <div class="container-premium">
+        <!-- 优势整合 -->
+        <section id="advantages" class="container-premium">
             <div class="section-title">
-                <h2 class="gradient-text">为什么是行知？</h2>
+                <h2 class="gradient-text">开远行知学校 —— 优势全整理</h2>
                 <div class="line-accent"></div>
             </div>
-            <div class="grid-premium">
-                <div class="card-premium value-card fade-in">
-                    <div class="value-card-icon">📚</div>
-                    <h3>不止于分数，但从不畏惧分数</h3>
-                    <p>深度学习的本质，是让孩子掌握"如何学习"。当认知能力被构建，高分只是水到渠成的赠品。我们拒绝透支，只做动力唤醒。</p>
+
+            <div class="card-premium">
+                <pre class="plain">====================================================
+        开远行知学校——优势全整理
+====================================================
+
+一、学校概况
+----------------------------------------------------
+- 性质：2019年经红河州和开远市教育体育局批准成立的九年一贯制全寄宿封闭式学校，2021年增设开远行知高级中学
+- 位置：云南省红河州开远市市西北路299号
+  （开远是国家园林城市、国家卫生城市、全国双拥模范城"七连冠"）
+- 规模：占地168亩，36个教学班，在校学生1500余人，教职工147人
+
+
+二、办学理念
+----------------------------------------------------
+- 理念："培根健体，启智润心"
+- 校训："志存高远，行有担当"
+- 培养目标："有远大志向、会自我管理、能勤奋刻苦"
+
+
+三、教学模式（核心竞争力）
+----------------------------------------------------
+
+【"三标五环"高效课堂】
+  1. 自主——学生独立自主学习
+  2. 合作——小组合作探究
+  3. 展示——学生当"小老师"
+  4. 精讲——教师精讲、拓展深化
+  5. 堂练——当堂训练、当堂过关
+
+【分层精准教学】
+  - 引进小闲智慧教学系统，支持错题复盘重练
+  - 依据学情分层布置个性化作业
+  - 落实"堂堂清、天天清、周周清、月月清、人人清"教学标准
+  - 开展特色化、目标式和订单式培养
+
+
+四、教学成绩（硬核数据）
+----------------------------------------------------
+
+【初中部（跨越式进步）】
+  - 学生成绩由入学时全市第12名 → 全市第2名
+  - 2026年州一模：九年级综合排名全市第二，总分提升122.06分，全科及格率提升34.15个百分点
+  - 九年级（2）班全科均分全市班级前十（全市76个班）
+    · 物理全市班级第二、历史第三、化学和道法第六
+  - 七年级、八年级各科均分稳居全市前列
+  - 2024-2025学年：七至九年级总平均分均居市区第2
+
+【小学部】
+  - 三年级数学城区第一、英语第二
+  - 四年级英语城区第三
+  - 五年级总平均分全州排名上升80名，数学上升116名
+
+【高中部】
+  - 2026年高三州统测：特控线、本科线上线人数新突破
+  - 文化类考生上线21人、艺术类3人
+  - 段惟志同学已通过分类招生考试被绥化学院本科提前录取
+  - 官网标注升学率100%
+
+
+五、AI智能伴学（特色亮点）
+----------------------------------------------------
+  - AI 24小时在线智能伴学，全天候一对一答疑
+  - 学生自主查漏补缺，摆脱被动听课模式
+  - 趣味语境记单词：情景化故事记词法
+  - 游戏化深度学习：积分、对战、宠物养成等趣味体系
+  - 专属平板学习终端（一人一机）
+  - 打通校内/居家学习场景
+
+六、英语与外语特色
+----------------------------------------------------
+  - 落地"英语分层学习项目"，自然拼读法+AI趣味情景拼读
+  - 高中增设日语课程，为英语学习困难的学生提供多元选择
+
+七、管理模式
+----------------------------------------------------
+  - 全封闭式军事化管理
+  - 半月假制度（两周放一次周末）
+  - 统一穿校服，坚决杜绝手机
+  - 科学作息，培养自律性和独立自主
+
+八、心理健康与导师制
+----------------------------------------------------
+  - 一生一导、一生一档、一人一策 成长导师制
+  - 班主任与心理教师协同管理
+  - 定期邀请校外教育/心理专家入校，提供个性化心理疏导
+
+九、硬件设施
+----------------------------------------------------
+  教学：教学楼、理化生实验室、科学实验室、微机室、图书室、报告厅
+  艺术：舞蹈教室、钢琴教室、美术画室、音乐功能室
+  运动：400米标准田径场、足球场、室内体育馆、篮球场
+  生活：学生公寓、营养餐厅、空调全覆盖、24小时热水独立卫浴
+  安全：全覆盖门禁系统、校园可视电话
+
+十、食宿条件
+----------------------------------------------------
+  - 食堂菜品丰富，开设夜宵窗口
+  - 周末可到生活农场开展烧烤、自主做饭等活动
+  - 宿舍空调+24小时热水+独立卫浴
+
+十一、校园活动
+----------------------------------------------------
+  - 高考送考仪式、春季徒步踏青、校园运动会、文艺晚会
+  - 各类班级德育活动、心理团辅活动
+  - 防恐防暴演练、消防安全教育
+  - 兼顾学习与综合素质发展
+
+十二、师资团队
+----------------------------------------------------
+  - 教师来自华中师范大学、云南师范大学、郑州大学、云南大学、云南民族大学等高校
+  - 多位中共党员教师
+  - 新入职教师年综合薪资约7-15万，五险、食宿免费
+
+十三、学费优惠政策
+----------------------------------------------------
+  1. 红河州南部六县及开远市生源：每学期减免1000元/人
+  2. 教师子女：每学期减免1000元
+  3. 一个家庭2个及以上学生：一次性各减免2000元/人
+  4. 本校直升：每学期减免2000元/期
+  5. 学期综合成绩优秀者：阶段性学费减免
+
+====================================================
+总结
+----------------------------------------------------
+开远行知中学最大的卖点是"入口低、出口高"——初中部从全市第12名
+干到第2名，加上全封闭军事化管理+AI智能教学+完善硬件+多项学费
+减免，在红河州同类学校中确实有竞争力。
+
+联系方式：
+  电话：0873-7179922
+  柳老师：18987391993
+  地址：云南省红河哈尼族彝族自治州开远市市西北路299号
+
+信息来源：
+  - 开远行知学校官网 http://www.kyxingzhi.com
+  - 2026年补录通知
+  - 2026年春季家长会报道
+  - 学业监测分析报告
+====================================================
+</pre>
+            </div>
+
+            <div style="margin-top:1.25rem; text-align:right; color:rgba(44,44,44,0.6); font-size:0.95rem">如需进一步分章节高亮或生成可打印版招生手册，请回复“生成招生手册”。</div>
+        </section>
+
+        <!-- 可视化图片/来源展示 -->
+        <section class="container-premium">
+            <div class="section-title"><h2>图片来源（示例外链）</h2><div class="line-accent"></div></div>
+            <div class="grid-2">
+                <div class="card-premium">
+                    <h3>校园视角（外链）</h3>
+                    <img src="http://www.kyxingzhi.com/upload/2025/06/060112215017.png" alt="校园视角" style="width:100%;border-radius:8px;margin-top:0.75rem">
+                    <p class="muted" style="margin-top:0.5rem">图片来自学校官网（外部链接），如需本仓库托管图片，请上传高清原图。</p>
                 </div>
-                <div class="card-premium value-card fade-in" style="animation-delay: 0.2s;">
-                    <div class="value-card-icon">🌍</div>
-                    <h3>把生活还给孩子，把未来交给能力</h3>
-                    <p>陶行知先生言："生活即教育，社会即学校。"在行知，真实课题、田野调查、社会实践中长出的能力，远比标准答案更能面对不确定的世界。</p>
-                </div>
-                <div class="card-premium value-card fade-in" style="animation-delay: 0.4s;">
-                    <div class="value-card-icon">🚀</div>
-                    <h3>不定义终点，只塑造终身奔跑的姿态</h3>
-                    <p>高级的教育是"赋能"。我们以成长型思维重塑评价体系，让每一份努力都能被量化激励，让坚韧、求索、自律写入人格底色的代码。</p>
+                <div class="card-premium">
+                    <h3>教学/活动示意（外链）</h3>
+                    <p class="muted">注：更多图片可在学校官网 新闻/校园动态 中查看并提取高清原图以便托管。</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 数据展示部分 -->
-    <section id="stats">
+        <!-- 联系信息 -->
+        <section id="contact" class="container-premium">
+            <div class="card-premium">
+                <h3 style="margin-bottom:1rem">联系我们</h3>
+                <p class="muted">开远行知中学 ｜ 地址：云南省红河哈尼族彝族自治州开远市市西北路299号</p>
+                <p style="margin-top:0.5rem">招生咨询电话：0873-7179922<br>柳老师：18987391993</p>
+                <p class="muted" style="margin-top:1rem;font-size:0.9rem">来源：学校官网与公开资料。请在最终对外发布前再次确认关键数据与图片版权。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background:var(--charcoal);color:#fff;padding:3rem 0">
         <div class="container-premium">
-            <div class="section-title">
-                <h2>令人信服的硬实力</h2>
-                <p style="color: rgba(44, 44, 44, 0.6);">数据即底气</p>
-                <div class="line-accent"></div>
-            </div>
-            <div class="grid-premium">
-                <div class="stat-item fade-in">
-                    <div class="counter" data-target="92">0</div>
-                    <h3>重点高中录取率</h3>
-                    <p>近三年省级重点高中平均录取率</p>
-                </div>
-                <div class="stat-item fade-in" style="animation-delay: 0.2s;">
-                    <div class="counter" data-target="8">0</div>
-                    <h3>精英小班</h3>
-                    <p>师生比下的小班教学，确保个性化辅导</p>
-                </div>
-                <div class="stat-item fade-in" style="animation-delay: 0.4s;">
-                    <div class="counter" data-target="40">0</div>
-                    <h3>骨干教师占比</h3>
-                    <p>省市级骨干教师及学科带头人占比</p>
-                </div>
-                <div class="stat-item fade-in" style="animation-delay: 0.6s;">
-                    <div class="counter" data-custom="TOP3">0</div>
-                    <h3>全市排名</h3>
-                    <p>连续五年中考综合排名稳居前三</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 教学方案部分 -->
-    <section id="solutions" style="background: white;">
-        <div class="container-premium">
-            <div class="section-title">
-                <h2 class="gradient-text">真正有效的"行知方案"</h2>
-                <div class="line-accent"></div>
-            </div>
-            <div class="grid-premium">
-                <div class="card-premium solution-card fade-in">
-                    <div class="solution-card-icon">🧠</div>
-                    <h3>五维高效学习法</h3>
-                    <p>基于认知科学的"预习激活-课堂沉浸-复盘建网-迁移应用-反思迭代"闭环，让每一个45分钟都产生真实认知留痕。课上解决80%问题，用科学压缩无效学习时长。</p>
-                </div>
-                <div class="card-premium solution-card fade-in" style="animation-delay: 0.2s;">
-                    <div class="solution-card-icon">🎨</div>
-                    <h3>全人课程生态</h3>
-                    <p>国家基础课程+学术拓展+行知特色选修（编程、机器人、戏剧、财商、陶艺、国学）。纳入课表的深度长程课，每周4课时，让天赋被系统打磨。</p>
-                </div>
-                <div class="card-premium solution-card fade-in" style="animation-delay: 0.4s;">
-                    <div class="solution-card-icon">👥</div>
-                    <h3>双班主任+导师制</h3>
-                    <p>每班配备教学班主任与成长班主任，每个孩子自选一名生涯导师。情绪、社交、目标管理，在日日微关怀中化解。</p>
-                </div>
-                <div class="card-premium solution-card fade-in" style="animation-delay: 0.6s;">
-                    <div class="solution-card-icon">🌟</div>
-                    <h3>无边界学习场</h3>
-                    <p>智慧教室、创客中心、沉浸式阅读馆、农耕实践园。学习发生在晨会辩论里，也发生在全国研学的高铁上。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 家长口碑部分 -->
-    <section id="testimonials">
-        <div class="container-premium">
-            <div class="section-title">
-                <h2>家长口碑</h2>
-                <p style="color: rgba(44, 44, 44, 0.6);">真实的回响</p>
-                <div class="line-accent"></div>
-            </div>
-            <div class="testimonial-grid">
-                <div class="card-premium testimonial-card fade-in">
-                    <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M3 21c3 0 7-1 7-8V5c0-1.25-4.5-5-7-5s-6 3.75-6 5c0 2 .75 4.5 2 6s2 3.5 2 5-1 3-2 3s-2.17-.75-2.5-2c-.5 1.5 0 2.5 1.5 2.5s4 .75 4 4z" />
-                    </svg>
-                    <p>当初，我们从三所中学里选了行知，看重的不是广告，而是看课时孩子在课堂上的眼神。三年后，孩子以全校前10的成绩考入昆一中，更让我意外的是，他整理出了自己初中三年的成长复盘本。这所学校给了孩子自我驾驭的能力。</p>
-                    <p>—— 2025届毕业生章同学的家长</p>
-                </div>
-                <div class="card-premium testimonial-card fade-in" style="animation-delay: 0.2s;">
-                    <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M3 21c3 0 7-1 7-8V5c0-1.25-4.5-5-7-5s-6 3.75-6 5c0 2 .75 4.5 2 6s2 3.5 2 5-1 3-2 3s-2.17-.75-2.5-2c-.5 1.5 0 2.5 1.5 2.5s4 .75 4 4z" />
-                    </svg>
-                    <p>女儿小学时数学较弱，一度害怕上学。在行知，老师居然为她定制了"分步成功计划"，从计算自信重建到后来当上数学课代表。她跟我说："妈妈，原来我也可以。"这份眼里有光，胜过一切。</p>
-                    <p>—— 2026届在读生陈同学的家长</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA 部分 -->
-    <section id="cta">
-        <div class="cta-bg-blur cta-bg-1"></div>
-        <div class="cta-bg-blur cta-bg-2"></div>
-        <div class="cta-content">
-            <h2 class="cta-h2">每个孩子，都值得被郑重地看见。</h2>
-            <p class="cta-p">在开远行知，我们以最郑重的教育匠心，等待与您共同书写下一次蜕变。2026年秋季七年级精英学位，现开放预约面谈。</p>
-            <div class="cta-buttons">
-                <button class="btn-white">即刻提交入读意向</button>
-                <button class="btn-white-outline">对话招生顾问</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="container-premium">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h3>行知中学</h3>
-                    <p>让每一个孩子的成长真实发生</p>
-                </div>
-                <div class="footer-section">
-                    <h4 style="color: white; font-weight: 600; margin-bottom: 1rem;">快速链接</h4>
-                    <ul class="footer-links">
-                        <li><a href="#hero">首页</a></li>
-                        <li><a href="#values">核心价值</a></li>
-                        <li><a href="#solutions">教学方案</a></li>
-                        <li><a href="#testimonials">家长评价</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 style="color: white; font-weight: 600; margin-bottom: 1rem;">联系我们</h4>
-                    <p style="margin-bottom: 0.5rem;">云南省开远市</p>
-                    <p>招生咨询电话</p>
-                </div>
-            </div>
-
-            <div class="footer-divider">
-                <div class="footer-quote">
-                    <p>千教万教教人求真，千学万学学做真人。</p>
-                    <p>—— 陶行知</p>
-                </div>
-
-                <div class="footer-bottom">
-                    <p>开远行知中学 © 2026</p>
-                    <p>让成长真实发生</p>
-                </div>
+            <div style="display:flex;flex-direction:column;gap:1rem;align-items:center">
+                <div style="font-weight:700">行知中学</div>
+                <div style="color:rgba(255,255,255,0.6)">让成长真实发生</div>
+                <div style="margin-top:1rem;color:rgba(255,255,255,0.4);font-size:0.95rem">开远行知中学 © 2026</div>
             </div>
         </div>
     </footer>
-
-    <script>
-        // 统计数字动画
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            
-            counters.forEach(counter => {
-                const target = counter.getAttribute('data-target');
-                const custom = counter.getAttribute('data-custom');
-                
-                if (custom) {
-                    counter.textContent = custom;
-                    return;
-                }
-                
-                const targetNum = parseInt(target);
-                let current = 0;
-                const increment = Math.ceil(targetNum / 60);
-                
-                const interval = setInterval(() => {
-                    current += increment;
-                    if (current >= targetNum) {
-                        counter.textContent = targetNum + '%';
-                        clearInterval(interval);
-                    } else {
-                        counter.textContent = current + '%';
-                    }
-                }, 30);
-            });
-        }
-
-        // 检测元素是否进入视口
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        // 观察所有需要动画的元素
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // 当统计部分进入视口时开始计数
-        const statsSection = document.getElementById('stats');
-        const statsObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        statsObserver.observe(statsSection);
-
-        // 平滑滚动链接
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
